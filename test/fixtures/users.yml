@@ -1,25 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  style: MyString
-  frequency_count: 1
-  frequency_interval: 1
-  metric_name: MyString
-  metric_goal: 1
-  end_date: 2022-02-12 10:54:11
-  public: false
-  frequency_slack: 1
-  message_to_self: MyText
-
-two:
-  name: MyString
-  style: MyString
-  frequency_count: 1
-  frequency_interval: 1
-  metric_name: MyString
-  metric_goal: 1
-  end_date: 2022-02-12 10:54:11
-  public: false
-  frequency_slack: 1
-  message_to_self: MyText
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value
