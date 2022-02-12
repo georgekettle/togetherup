@@ -1,0 +1,6 @@
+<h1>Your account</h1>
+<p><%= current_user.username %></p>
+<p><%= current_user.email %></p>
+<%= button_to destroy_user_session_path, method: :delete, data: { turbo: false }, class: "text-black border border-black px-6 py-4 text-center cursor-pointer inline-block uppercase w-full flex items-center justify-center font-medium" do %>
+  Logout
+<% end %>
