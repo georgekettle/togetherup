@@ -1,0 +1,21 @@
+<% if params[:style].nil? %>
+    <%= link_to 'Frequency Based', new_goal_path(style: 'frequency') %>
+    <%= link_to 'Metric Based', new_goal_path(style: 'metric') %>
+<% else %>
+    <%= simple_form_for @goal do |f| %>
+        <%= f.input :name, error: "Don't forget to give your goal a name" %>
+        <%= f.input :frequency_count, label: 'How many times', as: :integer  %>
+        <%= f.input :frequency_interval, label: 'Interval', as: :text  %>
+        <% if params[:style] == 'frequency' %>
+            <%= f.input :frequency_slack, label: 'Hit X percent of the time', as: :integer %>
+        <% else %>
+            <%= f.input :metric_name, label: 'What metric are you tracking?' %>
+            <%= f.input :metric_goal, label: 'Goal amount' %>
+        <% end %>
+        <p>Goal<p>
+        <%= f.input :end_date, label: 'Until date?' %>
+        <%= f.input :public, label: 'public' %>
+        <%= f.input :message_to_self, label: 'Message to self' %>
+        <%= f.button :submit %>
+    <% end %>
+<% end %>
