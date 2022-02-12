@@ -1,6 +1,34 @@
+<%= render 'goals/new_goal_progress' %>
+
 <% if params[:style].nil? %>
-    <%= link_to 'Frequency Based', new_goal_path(style: 'frequency') %>
-    <%= link_to 'Metric Based', new_goal_path(style: 'metric') %>
+    <%= render 'components/header' do %>
+        <h4 class="font-display text-2xl">Create a goal</h4>
+        <h1 class="font-bold text-4xl mb-4 uppercase">What type of goal is this?</h1>
+    <% end %>
+    <div class="grid gap-2 sm:grid-cols-2 md:grid-cols-3">
+        <%= link_to new_goal_path(style: 'frequency'), class: "w-full rounded-lg border-2 border-black flex items-end bg-center bg-no-repeat bg-cover bg-red-200 h-32 bg-white aspect-w-2 aspect-h-1 hover:-translate-x-0.5 hover:-translate-y-0.5 duration-200 ease-out transition-all hover:shadow-xl" do %>
+          <div class="flex items-end justify-between w-full p-4">
+            <div class="pr-4">
+              <h4 class="font-bold text-xl leading-tight mb-1">Frequency Based</h4>
+              <p class="text-gray-500 leading-none">Best for tracking streaks and holding you accountable to your goal</p>
+            </div>
+            <div class="h-10 w-10 rounded-full bg-pink text-black flex items-center justify-center flex-shrink-0 border-2 border-black ml-1 transform transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer">
+              <%= render "icons/arrow_right" %>
+            </div>
+          </div>
+        <% end %>
+        <%= link_to new_goal_path(style: 'metric'), class: "w-full rounded-lg border-2 border-black flex items-end bg-center bg-no-repeat bg-cover bg-red-200 h-32 bg-white aspect-w-2 aspect-h-1 hover:-translate-x-0.5 hover:-translate-y-0.5 duration-200 ease-out transition-all hover:shadow-xl" do %>
+          <div class="flex items-end justify-between w-full p-4">
+            <div class="pr-4">
+              <h4 class="font-bold text-xl leading-tight mb-1">Metric Based</h4>
+              <p class="text-gray-500 leading-none">Best for tracking quantities and amounts like savings or weight loss</p>
+            </div>
+            <div class="h-10 w-10 rounded-full bg-pink text-black flex items-center justify-center flex-shrink-0 border-2 border-black ml-1 transform transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer">
+              <%= render "icons/arrow_right" %>
+            </div>
+          </div>
+        <% end %>
+    </div>
 <% else %>
     <%= simple_form_for @goal do |f| %>
         <%= f.input :name, error: "Don't forget to give your goal a name" %>
