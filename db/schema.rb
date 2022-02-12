@@ -11,40 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 0) do
-  create_table "comments", force: :cascade do |t|
-    t.string "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "goals", force: :cascade do |t|
-    t.string "name"
-    t.string "style"
-    t.integer "frequency_count"
-    t.integer "frequency_interval"
-    t.string "metric_name"
-    t.integer "metric_goal"
-    t.datetime "end_date"
-    t.boolean "public"
-    t.integer "frequency_slack"
-    t.text "message_to_self"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "logs", force: :cascade do |t|
-    t.datetime "date"
-    t.integer "qty"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
 end
