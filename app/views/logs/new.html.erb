@@ -17,7 +17,8 @@
                 	class: "w-full",
                   value: localize(Date.today, format: "%Y/%-m/%d"),
                   data: {
-                    controller: "flatpickr"
+                    controller: "flatpickr",
+                    flatpickr_only_future_value: 'true'
                   }
                 } %>
     <%= f.button :submit, class:"w-full border-2 border-black bg-banana font-display text-2xl py-2 px-4" %>
