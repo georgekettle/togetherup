@@ -1,0 +1,17 @@
+<div class="max-w-md mx-auto">
+	<div class="flex items-center justify-between mb-4">
+		<h2 class="font-bold text-medium uppercase tracking-wide">Timeline</h2>
+		<%= link_to '+ Log activity', new_goal_log_path(goal), class:'py-1 px-4 border-2 border-black bg-jonquil font-display text-xl hover:scale-105 transform duration-200 ease-out transition-transform' %>
+	</div>
+	<div class="flow-root">
+	  <ul role="list" class="-mb-8">
+	  	<% goal.logs.order(date: :desc).each do |log| %>
+	  		<% is_last = goal.logs.order(date: :desc).last == log %>
+	  		<%= render 'logs/log', log: log, last: is_last %>
+	    <% end %>
+	    <% if goal.logs.empty? %>
+	    	<p class="text-center opacity-50 py-6">There is no activity on this goal yet...</p>
+	    <% end %>
+	  </ul>
+	</div>
+</div>

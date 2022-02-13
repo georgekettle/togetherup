@@ -4,14 +4,17 @@ class GoalsController < ApplicationController
 	end
 
 	def show
+		@hide_navbar = true
 		@goal = Goal.find(params[:id])
 	end
 
 	def new
+		@hide_navbar = true
 		@goal = Goal.new
 	end
 
 	def create
+		@hide_navbar = true
 		@goal = Goal.new(goal_params)
 		@goal.user = current_user
 		if @goal.save

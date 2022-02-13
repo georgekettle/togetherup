@@ -1,6 +1,6 @@
 <%= render 'components/header' do %>
 	<h1 class="font-bold text-4xl mb-4 uppercase">Your goals</h1>
-	<%= link_to '+ Create Goal', new_goal_path, class:'py-2 px-4 border-2 border-black bg-jonquil font-display text-xl hover:-translate-x-0.5 hover:-translate-y-0.5 transform duration-200 ease-out transition-all hover:shadow-xl' %>
+	<%= link_to '+ Create Goal', new_goal_path, class:'py-2 px-4 border-2 border-black bg-jonquil font-display text-xl hover:scale-105 transform duration-200 ease-out transition-all inline-block' %>
 <% end %>
 <div class="grid gap-2 sm:grid-cols-2 md:grid-cols-3">
 	<% @goals.each do |goal| %>

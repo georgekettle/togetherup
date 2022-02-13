@@ -1,0 +1,15 @@
+<%= render 'components/page_navbar', title: "New log for #{@goal.name.upcase}", back_link: goal_path(@goal) %>
+
+<%= simple_form_for [@goal, @log], data: { turbo: false } do |f| %>
+	<%= f.input :date,
+              as: :string,
+           		wrapper_html: { class: "w-full mb-2" },
+              input_html: {
+              	class: "w-full",
+                value: localize(Date.today, format: "%Y/%-m/%d"),
+                data: {
+                  controller: "flatpickr"
+                }
+              } %>
+  <%= f.button :submit, class:"w-full border-2 border-black bg-banana font-display text-2xl py-2 px-4" %>
+<% end %>
