@@ -1,0 +1,26 @@
+<%= render 'components/page_navbar', title: "New log for #{@goal.name.upcase}", back_link: goal_path(@goal) %>
+
+<div class="max-w-md mx-auto">
+  <%= simple_form_for [@goal, @log], data: { turbo: false } do |f| %>
+    <% if @goal.style == 'metric' %>
+      <div class="relative w-full">
+        <%= f.input :quantity, wrapper_html: { class: "w-full mb-2" }, input_html: { class: 'w-full', value: 1 } %>
+        <p class="absolute right-1 top-1/2 -translate-x-1/2 transform text-gray-500"><%= @goal.metric_name %></p>
+      </div>
+    <% else %>
+      <%= f.input :quantity, as: :hidden, input_html: { value: 1 } %>
+    <% end %>
+  	<%= f.input :date,
+                as: :string,
+             		wrapper_html: { class: "w-full mb-2" },
+                input_html: {
+                	class: "w-full",
+                  value: localize(Date.today, format: "%Y/%-m/%d"),
+                  data: {
+                    controller: "flatpickr",
+                    flatpickr_only_future_value: 'true'
+                  }
+                } %>
+    <%= f.button :submit, class:"w-full border-2 border-black bg-banana font-display text-2xl py-2 px-4" %>
+  <% end %>
+</div>

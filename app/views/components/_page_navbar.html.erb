@@ -1,0 +1,18 @@
+<% back_link ||= :back %>
+
+<div data-controller="navbar" class="fixed top-0 left-0 w-screen z-10 sm:px-4">
+	<div class="container h-16 flex items-center justify-between relative px-4">
+		<div class="flex-grow-1 flex items-center justify-start h-full w-1/2 text-xs md:text-base">
+			<%= link_to back_link, class: 'h-10 w-10 rounded-full bg-pink text-black flex items-center justify-center flex-shrink-0 border-2 border-black transform transition-transform duration-300 ease-out hover:scale-110 cursor-pointer' do %>
+				<%= render 'icons/arrow_right', klass: "text-black w-4.5 h-4.5 transform rotate-180" %>
+			<% end %>
+		</div>
+		<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+			<h1 class="font-display text-2xl tracking-wider"><%= title.upcase %></h1>
+		</div>
+		<div class="flex-grow-1 flex items-center justify-end h-full w-1/2 text-xs md:text-base">
+			<%= yield if yield %>
+		</div>
+	</div>
+</div>
+<div class="h-16 w-full mb-6"></div>

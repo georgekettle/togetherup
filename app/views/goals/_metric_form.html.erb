@@ -32,6 +32,7 @@
   <div class="py-6">
     <%= f.input :public, label: 'Make this goal public', input_html: { value: true, class: "mr-2" }, label_html: { class: "font-medium" }, wrapper_html: {class: "flex items-center"} %>
   </div>
+  <%= f.input :style, :as => :hidden, input_html: {value: params[:style]} %>
   <%# f.input :message_to_self, label: 'Message to self' %>
   <%= f.button :submit, class:"w-full border-2 border-black bg-banana font-display text-2xl py-2 px-4" %>
 <% end %>
