@@ -14,7 +14,11 @@
         <div class="flex items-start justify-between">
           <div class="text-sm">
             <a href="#" class="font-medium font-display text-xl leading-none text-black">@georgekettle</a>
-            <p class="text-sm text-gray-500">Logged an activity</p>
+            <% if log.goal.style == 'metric' %>
+              <p class="text-sm text-gray-500">Logged an activity <%= "of #{log.quantity} #{log.goal.metric_name.capitalize}" %></p>
+            <% else %>
+              <p class="text-sm text-gray-500">Logged an activity</p>
+            <% end %>
           </div>
           <p class="text-sm text-gray-500 inline"><%= log.days_ago_in_words %></p>
         </div>

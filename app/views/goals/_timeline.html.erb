@@ -5,8 +5,9 @@
 	</div>
 	<div class="flow-root">
 	  <ul role="list" class="-mb-8">
-	  	<% goal.logs.order(date: :desc).each do |log| %>
-	  		<% is_last = goal.logs.order(date: :desc).last == log %>
+	  	<% logs = goal.logs.order(date: :desc) %>
+	  	<% logs.each do |log| %>
+	  		<% is_last = logs.last == log %>
 	  		<%= render 'logs/log', log: log, last: is_last %>
 	    <% end %>
 	    <% if goal.logs.empty? %>

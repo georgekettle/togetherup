@@ -20,7 +20,7 @@ class LogsController < ApplicationController
 	private
 
 	def log_params
-		params.require(:log).permit(:date)
+		params.require(:log).permit(:date, :quantity)
 	end
 
 	def set_goal
