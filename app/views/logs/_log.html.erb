@@ -1,0 +1,28 @@
+<% last ||= false %>
+<li>
+  <div class="relative pb-8">
+    <% unless last %>
+      <span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-black" aria-hidden="true"></span>
+    <% end %>
+    <div class="relative flex items-start space-x-3">
+      <div class="relative">
+      	<div class="h-10 w-10 rounded-full bg-banana flex items-center justify-center ring-2 ring-black">
+      		<p>🏆</p>
+      	</div>
+      </div>
+      <div class="min-w-0 flex-1 bg-white border-2 border-black rounded-lg p-4">
+        <div class="flex items-start justify-between">
+          <div class="text-sm">
+            <a href="#" class="font-medium font-display text-xl leading-none text-black">@georgekettle</a>
+            <% if log.goal.style == 'metric' %>
+              <p class="text-sm text-gray-500">Logged an activity <%= "of #{log.quantity} #{log.goal.metric_name.capitalize}" %></p>
+            <% else %>
+              <p class="text-sm text-gray-500">Logged an activity</p>
+            <% end %>
+          </div>
+          <p class="text-sm text-gray-500 inline"><%= log.days_ago_in_words %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>
