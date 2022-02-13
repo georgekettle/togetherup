@@ -47,3 +47,7 @@ goals = Goal.create([
 									message_to_self: "Yessss, nice one man.",
 									user: user_1
 								}])
+
+Log.create( date: Date.yesterday, quantity: 1, goal: Goal.first)
+
+Log.create( date: Date.yesterday.prev_day.prev_day, quantity: 1, goal: Goal.first)

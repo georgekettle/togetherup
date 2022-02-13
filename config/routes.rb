@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :goals, only: [:show, :index, :new, :create]
 
   get 'account', to: 'accounts#account', as: :account
+  get 'profile', to: 'pages#profile', as: :profile
   # Defines the root path route ("/")
   root "pages#home"
 end
