@@ -4,6 +4,7 @@ class GoalsController < ApplicationController
 	end
 
 	def show
+		@goal = Goal.find(params[:id])
 	end
 
 	def new
@@ -14,17 +15,16 @@ class GoalsController < ApplicationController
 		@goal = Goal.new(goal_params)
 		@goal.user = current_user
 		if @goal.save
-			# redirect to dashboard
-			redirect_to root_path
-		  else
+			redirect_to goal_path(@goal), notice: "Goal successfully created"
+		else
 			render :new
-		  end
-	  end
+		end
+	end
 	  
-	#   private
+	private
 
-	  def goal_params
+  def goal_params
+  	params[:goal][:frequency_interval] = params[:goal][:frequency_interval].to_i
 		params.require(:goal).permit(:name, :frequency_count, :frequency_interval, :frequency_slack, :end_date, :public, :message_to_self)
-	  end
-	
+  end
 end
