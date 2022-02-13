@@ -1,6 +1,7 @@
 <%= render 'goals/new_goal_progress' %>
 
-<% if params[:style].nil? %>
+<div class="pb-10">
+  <% if params[:style].nil? %>
     <%= render 'components/header' do %>
         <h4 class="font-display text-2xl">Create a goal</h4>
         <h1 class="font-bold text-4xl mb-4 uppercase">What type of goal is this?</h1>
@@ -29,21 +30,15 @@
           </div>
         <% end %>
     </div>
-<% else %>
-    <%= simple_form_for @goal do |f| %>
-        <%= f.input :name, error: "Don't forget to give your goal a name" %>
-        <%= f.input :frequency_count, label: 'How many times', as: :integer  %>
-        <%= f.input :frequency_interval, label: 'Interval', as: :text  %>
-        <% if params[:style] == 'frequency' %>
-            <%= f.input :frequency_slack, label: 'Hit X percent of the time', as: :integer %>
-        <% else %>
-            <%= f.input :metric_name, label: 'What metric are you tracking?' %>
-            <%= f.input :metric_goal, label: 'Goal amount' %>
-        <% end %>
-        <p>Goal<p>
-        <%= f.input :end_date, label: 'Until date?' %>
-        <%= f.input :public, label: 'public' %>
-        <%= f.input :message_to_self, label: 'Message to self' %>
-        <%= f.button :submit %>
+  <% else %>
+    <%= render 'components/header' do %>
+      <h4 class="font-display text-2xl">Create a goal</h4>
+      <h1 class="font-bold text-4xl mb-4 uppercase">What are the details of your goal?</h1>
     <% end %>
-<% end %>
+    <% if params[:style] == 'frequency' %>
+      <%= render 'frequency_form', goal: @goal %>
+    <% elsif params[:style] == 'metric' %>
+      <%= render 'metric_form', goal: @goal %>
+    <% end %>
+  <% end %>
+</div>

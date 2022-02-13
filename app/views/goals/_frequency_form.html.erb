@@ -1,0 +1,20 @@
+<%= simple_form_for goal, defaults: { wrapper_html: { class: "inline" } } do |f| %>
+  <div class="flex items-center w-full mb-4">
+    <h4 class="font-bold text-4xl uppercase inline flex-shrink-0">I will</h4>
+    <%= f.input :name, placeholder: 'Run 5km', label: false, input_html: {class:"ml-2 flex-grow-1"} %>
+  </div>
+  <div class="flex items-center w-full flex-wrap mb-4">
+    <%= f.input :frequency_count, placeholder: '3', label: false, input_html: {class:'w-12 flex-shrink-0'} %>
+    <h4 class="font-bold text-4xl uppercase inline px-2 flex-shrink-0">Time(s) per</h4>
+    <%= f.input :frequency_interval, label: false, collection: Goal.frequency_intervals.map{|k, v| [k.humanize.capitalize, v]}, include_blank: false, input_html: { value: f.object.frequency_interval } %>
+  </div>
+  <div class="flex items-center w-full flex-wrap">
+    <h4 class="font-bold text-4xl uppercase inline mr-2">Until</h4>
+    <%= f.input :end_date, as: :string, label: false, input_html: { value: Date.today.next_week } %>
+  </div>
+  <div class="py-6">
+    <%= f.input :public, label: 'Make this goal public', input_html: { value: true, class: "mr-2" }, label_html: { class: "font-medium" }, wrapper_html: {class: "flex items-center"} %>
+  </div>
+  <%# f.input :message_to_self, label: 'Message to self' %>
+  <%= f.button :submit, class:"w-full border-2 border-black bg-banana font-display text-2xl py-2 px-4" %>
+<% end %>

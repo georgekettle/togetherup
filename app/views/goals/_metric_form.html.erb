@@ -1,0 +1,18 @@
+<%= simple_form_for goal do |f| %>
+  <h4>I will</h4>
+  <%= f.input :name, label: false %>
+  <%= f.input :frequency_count, label: false %>
+  
+  <%= f.input :frequency_interval, label: 'Interval', as: :text  %>
+  <% if params[:style] == 'frequency' %>
+      <%= f.input :frequency_slack, label: 'Hit X percent of the time', as: :integer %>
+  <% else %>
+      <%= f.input :metric_name, label: 'What metric are you tracking?' %>
+      <%= f.input :metric_goal, label: 'Goal amount' %>
+  <% end %>
+  <p>Goal<p>
+  <%= f.input :end_date, label: 'Until date?' %>
+  <%= f.input :public, label: 'public' %>
+  <%= f.input :message_to_self, label: 'Message to self' %>
+  <%= f.button :submit %>
+<% end %>
