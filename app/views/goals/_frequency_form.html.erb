@@ -1,4 +1,4 @@
-<%= simple_form_for goal, defaults: { wrapper_html: { class: "inline" } } do |f| %>
+<%= simple_form_for goal, defaults: { wrapper_html: { class: "inline" } }, data: {turbo: false} do |f| %>
   <div class="flex items-center w-full mb-4">
     <h4 class="font-bold text-4xl uppercase inline flex-shrink-0">I will</h4>
     <%= f.input :name, placeholder: 'Run 5km', label: false, input_html: {class:"ml-2 flex-grow-1"} %>
@@ -10,7 +10,15 @@
   </div>
   <div class="flex items-center w-full flex-wrap">
     <h4 class="font-bold text-4xl uppercase inline mr-2">Until</h4>
-    <%= f.input :end_date, as: :string, label: false, input_html: { value: Date.today.next_week } %>
+    <%= f.input :end_date,
+                as: :string,
+                label: false,
+                input_html: { 
+                  value: localize(Date.today.next_month, format: "%Y/%-m/%d"),
+                  data: {
+                    controller: "flatpickr"
+                  }
+                } %>
   </div>
   <div class="py-6">
     <%= f.input :public, label: 'Make this goal public', input_html: { value: true, class: "mr-2" }, label_html: { class: "font-medium" }, wrapper_html: {class: "flex items-center"} %>
