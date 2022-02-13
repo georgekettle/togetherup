@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   get 'account', to: 'accounts#account', as: :account
+  get 'profile', to: 'pages#profile', as: :profile
   # Defines the root path route ("/")
   root "pages#home"
 end
